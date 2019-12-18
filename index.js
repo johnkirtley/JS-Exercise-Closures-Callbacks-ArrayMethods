@@ -115,10 +115,10 @@ function processSum(numberList, callback) {
  * should return 1000.
  */
 function processProduct(num1, num2, callback) {
-  return product(num1, num2);
+  return callback(product(num1, num2));
 }
 const product = (num1, num2) => {
-  return num1 * num2 + 1000;
+  return num1 * num2;
 }
 
 
@@ -143,7 +143,7 @@ const product = (num1, num2) => {
  * should return "sad".
  */
 function processContains(item, list, callback) {
-  return contains(item, list);
+  return callback(contains(item, list));
 }
 
 const contains = (item, list) => {
