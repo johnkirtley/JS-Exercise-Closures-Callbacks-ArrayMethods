@@ -87,13 +87,14 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
  */
-function processSum(num1, num2, callback) {
-  return sum(num1, num2);
+function processSum(numberList, callback) {
+  const add = numberList.reduce(function (accum, value) {
+    return accum + value;
+  }, 0);
+  return callback(add);
 }
 
-const sum = (num1, num2) => {
-  return num1 + num2;
-}
+
 
 /**
  * ### Challenge `processProduct`
@@ -172,9 +173,36 @@ const contains = (item, list) => {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
  */
-function processDuplicateFree( /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */ ) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+
+// const array = [1, 3, 1, 2, 4, 3, 3, 1, 4, 5, 6, 4, 3, 3, 3, 5, 9, 6, 1]
+// const sortedArr = array.sort();
+
+// console.log(sortedArr)
+
+// const noDuplicates = 
+function processDuplicateFree(list, callback) {
+  //   return removeDupes(list);
+  // }
+
+  // const removeDupes = function (list) {
+  //   const newArr = [];
+
+  //   for (let i = 0; i < list.length; i++) {
+  //     if (sortedArr[i] !== sortedArr[i + 1]) {
+  //       newArr.push(sortedArr[i]);
+  //     }
+  //   }
+  //   return newArr;
 }
+
+// console.log(noDuplicates(array))
+// console.log(array.length)
+// console.log(noDuplicates(array).length)
+
+
+
+
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -195,9 +223,11 @@ function processDuplicateFree( /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASK
  * The full names appear in the array in the same order the runners appear in the `runners` array.
  */
 function getFullNames(runners) {
-  return runners.forEach(i => {
-    return i.last_name + ", " + i.first_name;
+  const full_names = [];
+  runners.forEach(i => {
+    full_names.push(i.last_name + ", " + i.first_name);
   })
+  return full_names;
 }
 
 /**
@@ -214,7 +244,7 @@ function getFullNames(runners) {
  */
 function firstNamesAllCaps(runners) {
   const allCaps = runners.map(i => {
-    return i.first_name.toUpperCase;
+    return i.first_name.toUpperCase();
   })
   return allCaps;
 }
@@ -277,10 +307,13 @@ function tallyUpDonations(runners) {
 function counterMaker() {
   let count = 0;
 
-  function counter() {
-
-  }
+  return function () {
+    return count++;
+  };
 }
+
+// let counter = counterMaker();
+// counter();
 
 
 
@@ -307,12 +340,18 @@ function counterMaker() {
 function counterMakerWithLimit(maxNum) {
   let count = 0;
 
-  function counter() {
-    if (maxNum > count) {
-      count += 1;
+  return function () {
+    if (count > maxNum) {
+      return count = 0;
+    } else if (count <= maxNum) {
+      return count++;
     }
   }
 }
+
+const counter = counterMakerWithLimit(3);
+counter();
+
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
