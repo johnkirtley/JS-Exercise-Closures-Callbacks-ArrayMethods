@@ -338,19 +338,24 @@ function counterMaker() {
  * etc
  */
 function counterMakerWithLimit(maxNum) {
-  let count = 0;
+  let count = -1;
+
 
   return function () {
-    if (count > maxNum) {
-      return count = 0;
-    } else if (count <= maxNum) {
-      return count++;
+    if (count != maxNum) {
+      count++;
+      return count;
+    } else {
+      count = 0;
+      return count;
     }
   }
 }
 
 const counter = counterMakerWithLimit(3);
 counter();
+
+
 
 
 /////////////// END OF CHALLENGE ///////////////
