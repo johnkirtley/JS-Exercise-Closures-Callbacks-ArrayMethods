@@ -181,23 +181,21 @@ const contains = (item, list) => {
 
 // const noDuplicates = 
 function processDuplicateFree(list, callback) {
-  //   return removeDupes(list);
-  // }
-
-  // const removeDupes = function (list) {
-  //   const newArr = [];
-
-  //   for (let i = 0; i < list.length; i++) {
-  //     if (sortedArr[i] !== sortedArr[i + 1]) {
-  //       newArr.push(sortedArr[i]);
-  //     }
-  //   }
-  //   return newArr;
+  return callback(removeDupes(list));
 }
 
-// console.log(noDuplicates(array))
-// console.log(array.length)
-// console.log(noDuplicates(array).length)
+const removeDupes = function removeDuplicates(list) {
+  let sortedList = list.sort()
+  let newArr = [];
+  for (let i = 0; i < sortedList.length; i++) {
+    if (sortedList[i] !== sortedList[i + 1]) {
+      newArr.push(sortedList[i])
+    }
+  }
+  return newArr;
+}
+
+
 
 
 
