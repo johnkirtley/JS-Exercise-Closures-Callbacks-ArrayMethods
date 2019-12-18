@@ -174,12 +174,6 @@ const contains = (item, list) => {
  * should return 3.
  */
 
-// const array = [1, 3, 1, 2, 4, 3, 3, 1, 4, 5, 6, 4, 3, 3, 3, 5, 9, 6, 1]
-// const sortedArr = array.sort();
-
-// console.log(sortedArr)
-
-// const noDuplicates = 
 function processDuplicateFree(list, callback) {
   return callback(removeDupes(list));
 }
